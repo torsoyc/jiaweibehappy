@@ -1,0 +1,68 @@
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f4efe6; /* 紙張底色 */
+      font-family: 'Noto Serif TC', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .paper {
+      width: 700px;
+      max-width: 90%;
+      background: #fffdf8;
+      padding: 60px 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 6px;
+      position: relative;
+      line-height: 1.8;
+    }
+
+    /* 淡淡紙張紋理 */
+    .paper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    .date {
+      text-align: right;
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 30px;
+    }
+
+    p {
+      margin: 12px 0;
+      font-size: 18px;
+    }
+
+    .signature {
+      margin-top: 40px;
+      text-align: right;
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+    }
+
+    /* 小裝飾：像信紙邊線 */
+    .paper::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      border: 1px solid rgba(0,0,0,0.05);
+      pointer-events: none;
+    }
