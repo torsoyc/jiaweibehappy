@@ -66,3 +66,102 @@
       border: 1px solid rgba(0,0,0,0.05);
       pointer-events: none;
     }
+
+/* ===== 密碼遮罩整體背景 ===== */
+#lock {
+  position: fixed;
+  inset: 0;
+  background: #f4efe6; /* 跟主頁一樣的紙色 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* ===== 中間那張「信紙」 ===== */
+.lock-paper {
+  background: #fffdf8;
+  padding: 50px 40px;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  max-width: 420px;
+  width: 90%;
+  position: relative;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* 紙張紋理 */
+.lock-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* 淡邊框（信紙感） */
+.lock-paper::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  border: 1px solid rgba(0,0,0,0.05);
+  pointer-events: none;
+}
+
+/* 標題（手寫感） */
+.lock-paper h2 {
+  font-family: 'Caveat', cursive;
+  font-size: 34px;
+  margin-bottom: 25px;
+}
+
+/* 輸入框 */
+.lock-paper input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+  background: transparent;
+  outline: none;
+  margin-bottom: 20px;
+  font-family: 'Noto Serif TC', serif;
+}
+
+/* placeholder 淡一點 */
+.lock-paper input::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+
+/* 按鈕（像手寫簽名） */
+.lock-paper button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.2);
+  cursor: pointer;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  transition: all 0.3s ease;
+}
+
+.lock-paper button:hover {
+  letter-spacing: 2px;
+  opacity: 0.7;
+}
+
+/* 錯誤提示 */
+#pwd-error {
+  color: #b33;
+  display: none;
+  margin-top: 15px;
+  font-size: 14px;
+}
