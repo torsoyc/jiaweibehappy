@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>給佳葦</title>
   <!-- 手寫字體（Google Fonts） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Noto+Serif+TC&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,46 +38,19 @@
   </div>
 
    <script>
-  // =====================
-  // BGM
-  // =====================
-  const audio = document.getElementById("bgm");
+  const correctPassword = "260430";
 
-  // 設定小聲
-  audio.volume = 20;
-
-  // 使用者第一次點擊後播放（避免瀏覽器阻擋）
-  function startAudio() {
-    audio.play();
-
-    // 淡入效果
-    let vol = 0;
-    const fade = setInterval(() => {
-      if (vol < 0.05) {
-        vol += 0.005;
-        audio.volume = vol;
-      } else {
-        clearInterval(fade);
-      }
-    }, 200);
-
-    document.removeEventListener("click", startAudio);
-  }
-
-  document.addEventListener("click", startAudio);
-     
-  // =====================
-  // 🔐 簡易密碼保護（前端）
-  // =====================
-  const correctPassword = "260430"; // ← 你可以改
   const btn = document.getElementById("unlock");
   const input = document.getElementById("pwd");
   const error = document.getElementById("pwd-error");
   const lock = document.getElementById("lock");
   const audio = document.getElementById("bgm");
 
+  // =====================
+  // 音樂（只保留一套）
+  // =====================
   function playMusicWithFade() {
-    audio.volume = 0; // 從 0 開始
+    audio.volume = 0;
     audio.play();
 
     let vol = 0;
@@ -88,18 +63,18 @@
       }
     }, 200);
   }
-     
+
+  // =====================
+  // 解鎖
+  // =====================
   function unlock() {
     if (input.value === correctPassword) {
       error.style.display = "none";
 
-      // 🎵 在這一刻開始音樂
       playMusicWithFade();
-      
-      // 加上動畫 class
+
       lock.classList.add("unlocking");
 
-      // 動畫結束後移除遮罩（避免擋到點擊）
       setTimeout(() => {
         lock.style.display = "none";
       }, 1000);
