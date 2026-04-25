@@ -142,14 +142,14 @@ p {
 /* 輸入框（像在寫） */
 .lock-paper input {
   width: 100%;
-  padding: 12px 6px;
+  padding: 12px 0;
   font-size: 16px;
   border: none;
   border-bottom: 1px solid rgba(0,0,0,0.2);
   background: transparent;
   outline: none;
   margin-bottom: 25px;
-
+  box-sizing: border-box;
   letter-spacing: 2px;
 }
 
@@ -186,6 +186,7 @@ p {
   display: none;
   margin-top: 15px;
   font-size: 14px;
+  text-align: center;
 }
 
 /* ===== 解鎖動畫 ===== */
