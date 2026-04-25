@@ -66,22 +66,37 @@
   // =====================
   // 🔐 簡易密碼保護（前端）
   // =====================
-  const SITE_PASSWORD = '260430'; // ⚠️ 前端密碼僅為簡易保護
-  const lock = document.getElementById('lock');
-  const pwdInput = document.getElementById('pwd');
-  const unlockBtn = document.getElementById('unlock');
-  const pwdError = document.getElementById('pwd-error');
+  const correctPassword = "260430"; // ← 你可以改
+  const btn = document.getElementById("unlock");
+  const input = document.getElementById("pwd");
+  const error = document.getElementById("pwd-error");
+  const lock = document.getElementById("lock");
 
-  function tryUnlock() {
-    if (pwdInput.value === SITE_PASSWORD) {
-      // 不再記錄解鎖狀態，每次重新整理都需要重新輸入
-      lock.style.display = 'none';
-      pwdError.style.display = 'none';
+  function unlock() {
+    if (input.value === correctPassword) {
+      error.style.display = "none";
+
+      // 加上動畫 class
+      lock.classList.add("unlocking");
+
+      // 動畫結束後移除遮罩（避免擋到點擊）
+      setTimeout(() => {
+        lock.style.display = "none";
+      }, 1000);
+
     } else {
-      pwdError.style.display = 'block';
+      error.style.display = "block";
     }
   }
 
+  btn.addEventListener("click", unlock);
+
+  // Enter 也可以送出
+  input.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      unlock();
+    }
+  });
   // 每次重新整理都重新上鎖，不自動解鎖
   unlockBtn.addEventListener('click', tryUnlock);
   pwdInput.addEventListener('keydown', (e) => {
