@@ -75,6 +75,7 @@ p {
   margin: 14px 0;
   font-size: 18px;
   letter-spacing: 0.5px;
+  text-align: justify;
 }
 
 /* ===== 密碼遮罩 ===== */
@@ -236,6 +237,7 @@ p {
 
   p {
     font-size: 16px;
+    text-align: justify;
   }
 
   .signature {
