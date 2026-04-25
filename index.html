@@ -59,15 +59,16 @@
     audio.play();
 
     let vol = 0;
+    const target = 0.3;
     const fade = setInterval(() => {
-      if (vol < 0.05) {
-        vol += 0.005;
+      if (vol < target) {
+        vol += 0.01;
         audio.volume = vol;
-      } else {
+        } else {
         clearInterval(fade);
-      }
-    }, 200);
-  }
+        }
+      }, 100);
+    }
 
   // =====================
   // 解鎖
