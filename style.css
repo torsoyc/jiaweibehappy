@@ -165,3 +165,43 @@
   margin-top: 15px;
   font-size: 14px;
 }
+
+/* ===== 動畫狀態 ===== */
+
+/* 整個遮罩淡出 */
+#lock.unlocking {
+  animation: fadeOut 1s ease forwards;
+}
+
+/* 信紙往上滑 */
+#lock.unlocking .lock-paper {
+  animation: slideUp 1s ease forwards;
+}
+
+/* 上滑動畫 */
+@keyframes slideUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(-60px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+/* 背景淡掉 */
+@keyframes fadeOut {
+  0% {
+    background: #f4efe6;
+  }
+  100% {
+    background: transparent;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
