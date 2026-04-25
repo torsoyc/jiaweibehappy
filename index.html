@@ -71,11 +71,30 @@
   const input = document.getElementById("pwd");
   const error = document.getElementById("pwd-error");
   const lock = document.getElementById("lock");
+  const audio = document.getElementById("bgm");
 
+  function playMusicWithFade() {
+    audio.volume = 0; // 從 0 開始
+    audio.play();
+
+    let vol = 0;
+    const fade = setInterval(() => {
+      if (vol < 0.05) {
+        vol += 0.005;
+        audio.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 200);
+  }
+     
   function unlock() {
     if (input.value === correctPassword) {
       error.style.display = "none";
 
+      // 🎵 在這一刻開始音樂
+      playMusicWithFade();
+      
       // 加上動畫 class
       lock.classList.add("unlocking");
 
