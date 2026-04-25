@@ -3,6 +3,8 @@ body, input, button {
   font-family: 'Noto Serif TC', 'PingFang TC', 'Microsoft JhengHei', serif;
 }
 
+@font-face { font-family: 'MyHandwriting'; src: url('ChenYuluoyan-Thin-Monospaced.woff2') format('woff2'); }
+
 /* ===== 主體 ===== */
 body {
   margin: 0;
@@ -53,6 +55,7 @@ h1 {
   font-size: 24px;
   margin-bottom: 20px;
   letter-spacing: 1px;
+  font-family: 'MyHandwriting', cursive;
 }
 
 .signature {
