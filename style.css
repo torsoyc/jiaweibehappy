@@ -184,12 +184,12 @@
     transform: translateY(0);
     opacity: 1;
   }
-  60% {
-    transform: translateY(-60px);
-    opacity: 0.6;
+  50% {
+    transform: translateY(-40px);
+    opacity: 0.7;
   }
   100% {
-    transform: translateY(-120vh);
+    transform: translateY(-150vh); /* 手機需要更高 */
     opacity: 0;
   }
 }
@@ -203,5 +203,74 @@
     background: transparent;
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+/* ===== 📱 手機優化 ===== */
+@media (max-width: 600px) {
+
+  body {
+    height: auto;
+    min-height: 100dvh; /* 解決手機vh問題 */
+    padding: 20px 12px;
+    align-items: flex-start; /* 不要垂直置中 */
+  }
+
+  .paper {
+    width: 100%;
+    max-width: 100%;
+    padding: 36px 24px;
+    border-radius: 4px;
+    line-height: 1.9;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  .date {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .signature {
+    font-size: 24px;
+  }
+
+  /* ===== 密碼區塊 ===== */
+  .lock-paper {
+    padding: 36px 24px;
+    max-width: 100%;
+  }
+
+  .lock-paper h2 {
+    font-size: 28px;
+  }
+
+  .lock-paper input {
+    font-size: 16px; /* 防止 iOS 自動放大 */
+    padding: 10px;
+  }
+
+  .lock-paper button {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+  #pwd-error {
+    font-size: 13px;
+  }
+
+  /* 邊框縮小一點 */
+  .paper::after,
+  .lock-paper::after {
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
   }
 }
