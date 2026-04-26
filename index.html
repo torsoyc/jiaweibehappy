@@ -107,12 +107,13 @@
   });
      
   // 打字效果
-  function typeWriter(element, speed = 70, callback) {
+  function typeWriter(element, speed = 90, callback) {
   const originalHTML = element.innerHTML;
   element.innerHTML = "";
   
   // ✨ 顯示這一段（重點）
   element.style.opacity = 1;
+  element.classList.add("active"); 
   
   let i = 0;
 
@@ -122,6 +123,7 @@
       i++;
       setTimeout(typing, speed);
     } else {
+      element.classList.remove("active");
       // ✅ 打完才呼叫下一段
       if (callback) callback();
     }
@@ -136,7 +138,7 @@ function startTypingSequence() {
 
   function next() {
     if (index < elements.length) {
-      typeWriter(elements[index], 70, () => {
+      typeWriter(elements[index], 90, () => {
         index++;
         setTimeout(next, 500); // ✨ 每段之間停一下
       });
