@@ -107,7 +107,7 @@
   });
      
   // 打字效果
-  function typeWriter(element, speed = 90, callback) {
+  function typeWriter(element, speed = 120, callback) {
   const originalHTML = element.innerHTML;
   element.innerHTML = "";
   
@@ -119,8 +119,14 @@
 
   function typing() {
     if (i < originalHTML.length) {
-      element.innerHTML = originalHTML.substring(0, i + 1);
-      i++;
+      if (originalHTML[i] === "<") {
+        const tagEnd = originalHTML.indexOf(">", i);
+        element.innerHTML += originalHTML.substring(i, tagEnd + 1);
+        i = tagEnd + 1;
+      } else {
+        element.innerHTML += originalHTML[i];
+        i++;
+      }
       setTimeout(typing, speed);
     } else {
       element.classList.remove("active");
@@ -138,7 +144,7 @@ function startTypingSequence() {
 
   function next() {
     if (index < elements.length) {
-      typeWriter(elements[index], 90, () => {
+      typeWriter(elements[index], 120, () => {
         index++;
         setTimeout(next, 500); // ✨ 每段之間停一下
       });
