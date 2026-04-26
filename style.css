@@ -270,6 +270,10 @@ p {
   }
 }
 
+.typing {
+  opacity: 0;
+}
+
 .typing::after {
   content: "|";
   animation: blink 1s infinite;
