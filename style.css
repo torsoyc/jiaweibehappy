@@ -59,10 +59,37 @@ h1 {
 }
 
 .signature {
+  opacity: 0;
+  transform: translateY(10px);
+
+  /* ✨ 手寫動畫核心 */
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid rgba(0,0,0,0.6);
+  width: 0;
+  
   margin-top: 40px;
   text-align: right;
   font-family: 'Caveat', cursive;
   font-size: 28px;
+}
+
+/* ✨ 開始寫 */
+.signature.writing {
+  opacity: 1;
+  animation: writeSig 2.5s steps(40, end) forwards,
+             blink 1s step-end infinite;
+}
+
+/* 寫字動畫 */
+@keyframes writeSig {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* 游標閃爍 */
+@keyframes blink {
+  50% { border-color: transparent; }
 }
 
 /* ===== 內文 ===== */
