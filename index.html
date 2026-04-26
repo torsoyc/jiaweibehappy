@@ -106,7 +106,7 @@
     if (e.key === 'Enter') tryUnlock();
   });
 
-  function typeWriter(element, speed = 50) {
+  function typeWriter(element, speed = 70, callback) {
   const text = element.innerText;
   element.innerText = "";
   
@@ -117,24 +117,25 @@
       element.innerText += text.charAt(i);
       i++;
       setTimeout(typing, speed);
+    } else {
+      // ✅ 打完才呼叫下一段
+      if (callback) callback();
     }
   }
 
   typing();
 }
 
-// 依序播放（重點✨）
 function startTypingSequence() {
   const elements = document.querySelectorAll(".typing");
   let index = 0;
 
   function next() {
     if (index < elements.length) {
-      typeWriter(elements[index], 70);
-      index++;
-
-      // 每段之間停一下（像在想）
-      setTimeout(next, 800);
+      typeWriter(elements[index], 70, () => {
+        index++;
+        setTimeout(next, 500); // ✨ 每段之間停一下
+      });
     }
   }
 
