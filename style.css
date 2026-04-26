@@ -275,6 +275,10 @@ p {
 }
 
 .typing::after {
+  content: "";
+}
+
+.typing.active::after {
   content: "|";
   animation: blink 1s infinite;
   margin-left: 3px;
