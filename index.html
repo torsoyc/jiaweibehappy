@@ -107,7 +107,7 @@
   });
      
   // 打字效果
-  function typeWriter(element, speed = 50, callback) {
+  function typeWriter(element, speed = 70, callback) {
   element.style.opacity = 1;
   element.classList.add("active");
 
@@ -161,14 +161,28 @@ function startTypingSequence() {
 
   function next() {
     if (index < elements.length) {
-      typeWriter(elements[index], 120, () => {
+      typeWriter(elements[index], 70, () => {
         index++;
-        setTimeout(next, 500); // ✨ 每段之間停一下
+        setTimeout(next, 500);
       });
+    } else {
+      // ✨ 所有段落打完後 → 顯示 signature
+      showSignature();
     }
   }
 
   next();
+}
+     
+function showSignature() {
+  const sig = document.querySelector(".signature");
+
+  sig.classList.add("writing");
+
+  // ✨ 寫完後把游標拿掉（更乾淨）
+  setTimeout(() => {
+    sig.style.borderRight = "none";
+  }, 2500);
 }
   </script>
 
