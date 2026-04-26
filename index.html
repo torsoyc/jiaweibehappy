@@ -90,6 +90,15 @@
 
     } else {
       error.style.display = "block";
+      // ✨ 觸發晃動
+    lock.classList.remove("shake"); // 重置動畫（很重要）
+    void lock.offsetWidth; // 強制 reflow（讓動畫可以重播）
+    lock.classList.add("shake");
+
+    // 可選：0.5秒後清掉 class
+    setTimeout(() => {
+      lock.classList.remove("shake");
+      }, 500);
     }
   }
   btn.addEventListener("click", unlock);
