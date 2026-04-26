@@ -269,3 +269,14 @@ p {
     right: 10px;
   }
 }
+
+.typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+  margin-left: 3px;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
