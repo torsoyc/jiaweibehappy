@@ -107,37 +107,54 @@
   });
      
   // 打字效果
-  function typeWriter(element, speed = 120, callback) {
-  const originalHTML = element.innerHTML;
-  element.innerHTML = "";
-  
-  // ✨ 顯示這一段（重點）
+  function typeWriter(element, speed = 50, callback) {
   element.style.opacity = 1;
-  element.classList.add("active"); 
-  
-  let i = 0;
+  element.classList.add("active");
+
+  // 👉 抓所有文字節點
+  const walker = document.createTreeWalker(
+    element,
+    NodeFilter.SHOW_TEXT,
+    null,
+    false
+  );
+
+  const textNodes = [];
+  let node;
+
+  while (node = walker.nextNode()) {
+    textNodes.push(node);
+  }
+
+  // 👉 先把所有文字清空（但保留HTML結構）
+  const fullTexts = textNodes.map(n => n.nodeValue);
+  textNodes.forEach(n => n.nodeValue = "");
+
+  let nodeIndex = 0;
+  let charIndex = 0;
 
   function typing() {
-    if (i < originalHTML.length) {
-      if (originalHTML[i] === "<") {
-        const tagEnd = originalHTML.indexOf(">", i);
-        element.innerHTML += originalHTML.substring(i, tagEnd + 1);
-        i = tagEnd + 1;
-      } else {
-        element.innerHTML += originalHTML[i];
-        i++;
+    if (nodeIndex < textNodes.length) {
+      const currentText = fullTexts[nodeIndex];
+
+      textNodes[nodeIndex].nodeValue += currentText.charAt(charIndex);
+      charIndex++;
+
+      if (charIndex >= currentText.length) {
+        nodeIndex++;
+        charIndex = 0;
       }
+
       setTimeout(typing, speed);
     } else {
       element.classList.remove("active");
-      // ✅ 打完才呼叫下一段
       if (callback) callback();
     }
   }
 
   typing();
 }
-
+     
 function startTypingSequence() {
   const elements = document.querySelectorAll(".typing");
   let index = 0;
