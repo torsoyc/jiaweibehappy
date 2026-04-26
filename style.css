@@ -80,7 +80,7 @@ h1 {
 /* ✨ 開始寫 */
 .signature.writing {
   opacity: 1;
-  animation: writeMask 2.5s ease forwards;
+  animation: writeMask 5s ease forwards;
 }
 
 /* 寫字動畫 */
