@@ -77,7 +77,7 @@ h1 {
 
 /* ✨ 開始寫 */
 .signature.writing {
-  animation: writeMove 5s ease-in-out forwards;
+  animation: writeMove 3.5s ease-out forwards;
 }
 
 /* ✨ 正確寫出動畫 */
