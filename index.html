@@ -105,10 +105,11 @@
   pwdInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') tryUnlock();
   });
-
+     
+  // 打字效果
   function typeWriter(element, speed = 70, callback) {
-  const text = element.innerText;
-  element.innerText = "";
+  const originalHTML = element.innerHTML;
+  element.innerHTML = "";
   
   // ✨ 顯示這一段（重點）
   element.style.opacity = 1;
@@ -116,8 +117,8 @@
   let i = 0;
 
   function typing() {
-    if (i < text.length) {
-      element.innerText += text.charAt(i);
+    if (i < originalHTML.length) {
+      element.innerHTML = originalHTML.substring(0, i + 1);
       i++;
       setTimeout(typing, speed);
     } else {
