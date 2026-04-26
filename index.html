@@ -185,7 +185,10 @@ function startTypingSequence() {
      
 function showSignature() {
   const sig = document.querySelector(".signature");
-  sig.classList.add("writing");
+  // 小延遲更像「收尾寫名」
+  setTimeout(() => {
+    sig.classList.add("writing");
+  }, 300);
 }
   </script>
 
