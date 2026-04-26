@@ -60,18 +60,18 @@ h1 {
 
 .signature {
   opacity: 1;
-  display: inline-block;
+  display: block;
   margin-top: 40px;
   text-align: right;
   font-family: 'Caveat', cursive;
   font-size: 28px;
 
   /* ✨ 一開始完全遮住 */
-  -webkit-mask-image: linear-gradient(to right, black 0%, black 0%);
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 0%, transparent 0%);
   -webkit-mask-size: 200% 100%;
   -webkit-mask-position: right;
 
-  mask-image: linear-gradient(to right, black 0%, black 0%);
+  mask-image: linear-gradient(to right, black 0%, black 0%, transparent 0%);
   mask-size: 200% 100%;
   mask-position: right;
 }
@@ -82,12 +82,11 @@ h1 {
 }
 
 /* ✨ 正確寫出動畫 */
-@keyframes writeMask {
+@keyframes writeSig {
   0% {
     -webkit-mask-position: right;
     mask-position: right;
   }
-
   100% {
     -webkit-mask-position: left;
     mask-position: left;
